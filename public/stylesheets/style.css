@@ -3,6 +3,22 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 34px;
+}
+
 a {
   color: #00B7FF;
 }
+
+.posts-div {
+  border: solid 1px black;
+}
+
+.comments-div {
+  border: dashed 1px grey;
+}
+
