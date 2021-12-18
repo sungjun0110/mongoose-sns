@@ -7,11 +7,21 @@ const newPostForm = document.getElementById('new-post');
 const pins = document.getElementsByClassName('pin');
 const posts = document.getElementsByClassName('posts');
 
-for (let i = 0; i < pins.length; i++) {
-    pins[i].addEventListener('click', function() {
-        posts[i].style.display = 'block';
-    });
-}
+$('.pin').on('click', function() {
+    const photoId = $(this).children()[0].value;
+    const pinId = $(this).children()[1].value;
+    console.log(`/pins/${photoId}/${pinId}`);
+    $.ajax({
+        url: `/pins/${photoId}/${pinId}`
+    })
+    .done(function(data) {
+        console.log($('#posts > h3'));
+        console.log(data);
+        $('.posts > h3').text(data[0].title);
+        $('.posts > p').text(data[0].content);
+        $('.posts').css('display', 'block');
+    })
+});
 
 photo.addEventListener('click', function(e) {
     const coord = getPosition(e);

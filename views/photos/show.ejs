@@ -3,15 +3,14 @@
 <main>
     <div id='photo-div'>
         <img id='large-photo' src=<%= photo.address %> alt="img"></img>
-        <% for (let i = 0; i < photo.groups.length; i++) { %>
-            <div class='pin' style="left: <%= photo.groups[i].coords[0] %>%; top: <%= photo.groups[i].coords[1] %>%;" ></div>
-            <div class="posts <%= i %>">
-                <% photo.groups[i].posts.forEach(post => { %>
-                    <h3><%= post.title %></h3>
-                    <p><%= post.content %></p>
-                <% }) %>
-            </div>
+        <% for (let i = 0; i < photo.pins.length; i++) { %>
+            <div class='pin' style="left: <%= photo.pins[i].coords[0] %>%; top: <%= photo.pins[i].coords[1] %>%;" ><input class='photoId' value="<%= photo._id %>" type="hidden"><input class='pinId' value="<%= photo.pins[i]._id %>" type="hidden"></div>
         <% } %>
+        <div class="posts">
+            <!-- <button class="delete-btn" method="POST"></button> -->
+            <h3></h3>
+            <p></p>
+        </div>
 
         <form id="new-post" action="/photos/<%= photo._id %>" method="POST">
             <label>Title: </label>

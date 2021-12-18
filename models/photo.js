@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const groupSchema = new Schema({
+const pinSchema = new Schema({
     coords: {
         type: [String],
         required: true,
@@ -27,7 +27,7 @@ const photoSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
-    groups: [groupSchema],
+    pins: [pinSchema],
 }, {
     timestamps: true
 })

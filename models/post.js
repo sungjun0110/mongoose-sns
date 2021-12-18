@@ -25,7 +25,8 @@ const postSchema = new Schema({
         type: String,
         required: true,
     }, 
-    comments: [commentSchema],   
+    comments: [commentSchema],
+    pin: []   
 }, {
     timestamps: true,
 });

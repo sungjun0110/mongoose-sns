@@ -20,7 +20,6 @@ function newPost(req, res) {
 }
 
 function create(req, res) {
-    console.log('post.create', req.body);
     const post = new Post(req.body);
     post.save(function(err) {
         if (err) {

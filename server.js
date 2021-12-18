@@ -16,7 +16,7 @@ var usersRouter = require('./routes/users');
 const photosRouter = require('./routes/photos');
 const postsRouter = require('./routes/posts');
 const commentsRouter = require('./routes/comments');
-const groupsRouter = require('./routes/groups');
+const groupsRouter = require('./routes/pins');
 
 var app = express();
 

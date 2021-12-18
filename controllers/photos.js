@@ -9,7 +9,6 @@ module.exports = {
 
 function index(req, res) {
     Photo.find({}, function(err, photos) {
-        console.log(photos);
         res.render('photos/index', {
             title: 'All Photos',
             photos
