@@ -1,0 +1,29 @@
+<%- include('../partials/header') %> 
+
+<main>
+    <div id='photo-div'>
+        <img id='large-photo' src=<%= photo.address %> alt="img"></img>
+        <% for (let i = 0; i < photo.groups.length; i++) { %>
+            <div class='pin' style="left: <%= photo.groups[i].coords[0] %>%; top: <%= photo.groups[i].coords[1] %>%;" ></div>
+            <div class="posts <%= i %>">
+                <% photo.groups[i].posts.forEach(post => { %>
+                    <h3><%= post.title %></h3>
+                    <p><%= post.content %></p>
+                <% }) %>
+            </div>
+        <% } %>
+
+        <form id="new-post" action="/photos/<%= photo._id %>" method="POST">
+            <label>Title: </label>
+            <input type="text" name="title">
+            <br>
+            <label>Content:</label>
+            <textarea type="text" name="content"></textarea>
+            <input id="coords-input" name="coords" type="hidden">
+            <button type="submit" value="New Post">Add</button>
+        </form>
+    </div>
+    
+</main>
+
+<%- include('../partials/footer') %>

@@ -1,7 +1,11 @@
+<%- include('../partials/header') %> 
 <main>
     <form id="new-photo" action="/photos" method="POST">
+        <label>Image Address: </label>
+        <input type="text" name="address">
         <label>Title: </label>
         <input type="text" name="title">
         <button type="submit" value="New Photo">Add</button>
     </form>
 </main>
+<%- include('../partials/footer') %> 

@@ -1,5 +1,4 @@
 const Post = require('../models/post');
-const posts = require('./posts');
 
 module.exports = {
     create,

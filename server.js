@@ -16,6 +16,7 @@ var usersRouter = require('./routes/users');
 const photosRouter = require('./routes/photos');
 const postsRouter = require('./routes/posts');
 const commentsRouter = require('./routes/comments');
+const groupsRouter = require('./routes/groups');
 
 var app = express();
 
@@ -42,9 +43,10 @@ app.use(function (req, res, next) {
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/', photosRouter)
+app.use('/photos', photosRouter)
 app.use('/users', usersRouter);
-app.use('/posts', postsRouter);
+app.use('/', groupsRouter);
+app.use('/', postsRouter);
 app.use('/', commentsRouter);
 
 // catch 404 and forward to error handler

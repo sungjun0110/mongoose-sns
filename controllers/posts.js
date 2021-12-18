@@ -20,13 +20,13 @@ function newPost(req, res) {
 }
 
 function create(req, res) {
-    console.log(req.body);
+    console.log('post.create', req.body);
     const post = new Post(req.body);
     post.save(function(err) {
         if (err) {
             console.log(err);
-            return res.redirect('/posts/new');
+            return res.redirect('back');
         }
-        res.redirect(`/posts`)
+        res.redirect(`back`)
     })
 }

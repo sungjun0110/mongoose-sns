@@ -3,13 +3,13 @@ const Schema = mongoose.Schema;
 
 const groupSchema = new Schema({
     coords: {
-        type: [Number],
+        type: [String],
         required: true,
     },
-    posts: {
+    posts: [{
         type: Schema.Types.ObjectId,
         ref: 'Post',
-    },
+    }],
 }, {
     timestamps: true,
 })

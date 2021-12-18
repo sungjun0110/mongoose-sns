@@ -2,10 +2,9 @@
 
 <main>
     <div>
-        <% if (photos) {photos.forEach(photo => { %>
-            test
-        <% })}; %>
-        No photos
+        <% photos.forEach(photo => { %>
+            <a href="/photos/<%= photo._id %>"><img class="photo" src=<%= photo.address %>></a>
+        <% }); %>
     </div>
 </main>
 
