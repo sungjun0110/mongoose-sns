@@ -2,17 +2,20 @@
 
 <main>
     <div id='photo-div'>
-        <img id='large-photo' src=<%= photo.address %> alt="img"></img>
+        <img id='large-photo' src=<%= photo.address %> alt='img'></img>
         <% for (let i = 0; i < photo.pins.length; i++) { %>
-            <div class='pin' style="left: <%= photo.pins[i].coords[0] %>%; top: <%= photo.pins[i].coords[1] %>%;" ><input class='photoId' value="<%= photo._id %>" type="hidden"><input class='pinId' value="<%= photo.pins[i]._id %>" type="hidden"></div>
+            <div class='pin' style="left: <%= photo.pins[i].coords[0] %>%; top: <%= photo.pins[i].coords[1] %>%;" ><input class='photoId' value='<%= photo._id %>' type='hidden'><input class='pinId' value="<%= photo.pins[i]._id %>" type='hidden'></div>
         <% } %>
-        <div class="posts">
-            <!-- <button class="delete-btn" method="POST"></button> -->
+        <div class='posts'>
+            <form class='close-btn' method='POST'>
+                <button>X</button>
+            </form>
             <h3></h3>
             <p></p>
         </div>
 
         <form id="new-post" action="/photos/<%= photo._id %>" method="POST">
+            <button class="close-btn">X</button>
             <label>Title: </label>
             <input type="text" name="title">
             <br>

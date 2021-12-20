@@ -1,48 +1,47 @@
-const photoDiv = document.getElementById('photo-div');
-const position = photoDiv.getBoundingClientRect();
-const coords = document.getElementById('coords-input');
-const photo = document.getElementById('large-photo');
-const newPostForm = document.getElementById('new-post');
+// click event listener for close buttons
+$('.close-btn').on('click', function() {
+    $(this).parent().css('display', 'none');
+})
 
-const pins = document.getElementsByClassName('pin');
-const posts = document.getElementsByClassName('posts');
-
+// click event listener for pins
 $('.pin').on('click', function() {
     const photoId = $(this).children()[0].value;
     const pinId = $(this).children()[1].value;
-    console.log(`/pins/${photoId}/${pinId}`);
     $.ajax({
         url: `/pins/${photoId}/${pinId}`
     })
     .done(function(data) {
-        console.log($('#posts > h3'));
-        console.log(data);
+        $('.close-btn').attr('action', `/pins/${photoId}/${pinId}?_method=DELETE`);
         $('.posts > h3').text(data[0].title);
         $('.posts > p').text(data[0].content);
         $('.posts').css('display', 'block');
     })
 });
 
-photo.addEventListener('click', function(e) {
+// photo div in show ejs
+$('#large-photo').on('click', function(e) {
     const coord = getPosition(e);
-    coords.value = coord.x + '-' + coord.y;
+    $('#coords-input').val(`${coord.x}-${coord.y}`);
     addPin(coord.x, coord.y);
-    newPostForm.style.display = 'block';
+    $('#new-post').css('display', 'block');
 });
 
+// creates a pin div
 function addPin(x, y) { // color
     const pinDiv = document.createElement('div');
     pinDiv.setAttribute('class', 'pin');
     pinDiv.style.left = `${x}%`;
     pinDiv.style.top = `${y}%`;
-    photoDiv.appendChild(pinDiv);
+    $('#photo-div').append(pinDiv);
 }
 
+// gets the position of where you click in x, y coordinate. 
 function getPosition(e) {
-    const x = e.pageX - (window.innerWidth * 0.1);
-    const y = e.pageY - 50;
-    const photoW = photoDiv.clientWidth;
-    const photoH = photoDiv.clientHeight;
+    const photoDiv = $('#photo-div');
+    const x = e.pageX;
+    const y = e.pageY - 200;
+    const photoW = photoDiv.innerWidth();
+    const photoH = photoDiv.innerHeight();
     const xr = x/photoW * 100;
     const yr = y/photoH * 100;
     return {x: xr.toFixed(2), y: yr.toFixed(2)};

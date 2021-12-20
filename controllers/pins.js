@@ -4,6 +4,7 @@ const Post = require('../models/post')
 module.exports = {
     create,
     index,
+    delete: deletePin,
 }
 
 function create(req, res, next) {
@@ -38,5 +39,15 @@ function index(req, res) {
                 })
             }
         })
+    })
+}
+
+function deletePin(req, res) {
+    const photoId = req.params.photoId;
+    const pinId = req.params.pinId;
+    Photo.updateOne({_id: photoId}, {$pull: {'pins': {_id: pinId}}}, function(err, result) {
+        if(err) res.redirect('back');
+        console.log(result);
+        res.redirect(`/photos/${photoId}`);
     })
 }

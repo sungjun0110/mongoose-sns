@@ -1,9 +1,11 @@
 <%- include('../partials/header') %> 
 
 <main>
-    <div>
+    <div id='photo-index'>
         <% photos.forEach(photo => { %>
-            <a href="/photos/<%= photo._id %>"><img class="photo" src=<%= photo.address %>></a>
+            <div class='photo-grid-tiles'>
+                <a href="/photos/<%= photo._id %>"><img class="photo" src=<%= photo.address %>></a>
+            </div>
         <% }); %>
     </div>
 </main>
