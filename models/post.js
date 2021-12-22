@@ -17,6 +17,10 @@ const commentSchema = new Schema({
 })
 
 const postSchema = new Schema({
+    coords: {
+        type: [String],
+        required: true,
+    },
     title: {
         type: String,
         required: true,
@@ -25,8 +29,13 @@ const postSchema = new Schema({
         type: String,
         required: true,
     }, 
-    comments: [commentSchema],
-    pin: []   
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+    },
+    userName: String,
+    userAvatar: String,
+    comments: [commentSchema], 
 }, {
     timestamps: true,
 });

@@ -1,22 +1,46 @@
-// click event listener for close buttons
+// click event listener for close/delete buttons
 $('.close-btn').on('click', function() {
     $(this).parent().css('display', 'none');
-})
+});
+$('.delete-btn').on('click', function() {
+    $(this).parent().css('display', 'none');
+});
 
 // click event listener for pins
 $('.pin').on('click', function() {
     const photoId = $(this).children()[0].value;
-    const pinId = $(this).children()[1].value;
+    const postId = $(this).children()[1].value;
     $.ajax({
-        url: `/pins/${photoId}/${pinId}`
+        url: `/posts/${photoId}/${postId}`
     })
     .done(function(data) {
-        $('.close-btn').attr('action', `/pins/${photoId}/${pinId}?_method=DELETE`);
-        $('.posts > h3').text(data[0].title);
-        $('.posts > p').text(data[0].content);
+        $('.delete-btn').attr('action', `/posts/${photoId}/${postId}?_method=DELETE`);
+        $('.posts > h3').text(data.title);
+        $('.posts > p').text(data.content);
         $('.posts').css('display', 'block');
     })
 });
+
+// animations for pins
+setTimeout(() => {
+    pinOpacity(false, 5)
+}, 1000)
+
+function pinOpacity(dim, loop) {
+    for (let i = 0; i < loop; i++) {
+        if (dim) {
+            dim = !dim;
+            setTimeout(() => {
+                $('.pin').css('opacity', '0.2')
+            }, 350 * i);
+        } else {
+            dim = !dim;
+            setTimeout(() => {
+                $('.pin').css('opacity', '1');
+            }, 350 * i);
+        }
+    }
+}
 
 // photo div in show ejs
 $('#large-photo').on('click', function(e) {
@@ -45,4 +69,12 @@ function getPosition(e) {
     const xr = x/photoW * 100;
     const yr = y/photoH * 100;
     return {x: xr.toFixed(2), y: yr.toFixed(2)};
+}
+
+// background animation
+// $('body').css('background-color', 'red');
+
+function backgroundDiv () {
+    const html = `<div class='background-div></div>`
+
 }

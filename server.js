@@ -16,7 +16,6 @@ var usersRouter = require('./routes/users');
 const photosRouter = require('./routes/photos');
 const postsRouter = require('./routes/posts');
 const commentsRouter = require('./routes/comments');
-const groupsRouter = require('./routes/pins');
 
 var app = express();
 
@@ -45,7 +44,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/photos', photosRouter)
 app.use('/users', usersRouter);
-app.use('/', groupsRouter);
 app.use('/', postsRouter);
 app.use('/', commentsRouter);
 

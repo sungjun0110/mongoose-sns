@@ -1,10 +1,12 @@
 const Photo = require('../models/photo');
+const Post = require('../models/post');
 
 module.exports = {
     index,
     new: newPhoto,
     create,
-    show
+    show,
+    delete: deletePhoto,
 }
 
 function index(req, res) {
@@ -23,6 +25,9 @@ function newPhoto(req, res) {
 }
 
 function create(req, res) {
+    req.body.user = req.user._id;
+    req.body.userName = req.user.name;
+    req.body.userAvatar = req.user.avatar;
     const photo = new Photo(req.body);
     photo.save(function(err) {
         if (err) return res.redirect('/photos/new');
@@ -31,10 +36,19 @@ function create(req, res) {
 }
 
 function show(req, res) {
-    Photo.findById(req.params.id, function(err, photo) {
+    Photo.findById(req.params.id).populate('posts').exec(function(err, photo) {
         res.render(`photos/show`, {
-            title: Photo,
+            title: 'Photo',
             photo
+        });
+    })
+}
+
+function deletePhoto(req, res) {
+    console.log('WE ARE HERE');
+    Photo.findByIdAndDelete(req.params.id, function(err, photo) {
+        Post.deleteMany({_id: { $in: photo.posts }}, function(err, result) {
+            console.log(result);
         })
     })
 }

@@ -3,27 +3,42 @@
 <main>
     <div id='photo-div'>
         <img id='large-photo' src=<%= photo.address %> alt='img'></img>
-        <% for (let i = 0; i < photo.pins.length; i++) { %>
-            <div class='pin' style="left: <%= photo.pins[i].coords[0] %>%; top: <%= photo.pins[i].coords[1] %>%;" ><input class='photoId' value='<%= photo._id %>' type='hidden'><input class='pinId' value="<%= photo.pins[i]._id %>" type='hidden'></div>
+        <% for (let i = 0; i < photo.posts.length; i++) { %>
+            <div class='pin' style='left: <%= photo.posts[i].coords[0] %>%; top: <%= photo.posts[i].coords[1] %>%;' ><input class='photoId' value='<%= photo._id %>' type='hidden'><input class='postId' value='<%= photo.posts[i]._id %>' type='hidden'></div>
         <% } %>
         <div class='posts'>
-            <form class='close-btn' method='POST'>
-                <button>X</button>
+            <form class='delete-btn' method='POST'>
+                <button>Delete</button>
             </form>
+            <button class='close-btn'>X</button>
             <h3></h3>
             <p></p>
         </div>
 
-        <form id="new-post" action="/photos/<%= photo._id %>" method="POST">
-            <button class="close-btn">X</button>
+        <form id='new-post' action='/posts/<%= photo._id %>' method='POST'>
+            <button class='close-btn'>X</button>
             <label>Title: </label>
-            <input type="text" name="title">
+            <input type='text' name='title' required>
             <br>
             <label>Content:</label>
-            <textarea type="text" name="content"></textarea>
-            <input id="coords-input" name="coords" type="hidden">
-            <button type="submit" value="New Post">Add</button>
+            <textarea type='text' name='content'></textarea>
+            <input id='coords-input' name='coords' type='hidden'>
+            <button type='submit' value='New Post'>Add</button>
         </form>
+    </div>
+
+    <div id='delete-photo'>
+        <form action='/photos/<%= photo._id %>?_method=DELETE' method='POST'>
+            <button type='submit'>Delete Photo</button>
+        </form>
+    </div>
+
+    <div id='posts-div'>
+        <% photo.posts.forEach(post => { %>
+            <div class='post'>
+                <h3><%= post.title %></h3>
+            </div>
+        <% }) %>
     </div>
     
 </main>

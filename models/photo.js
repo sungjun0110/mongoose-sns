@@ -1,19 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const pinSchema = new Schema({
-    coords: {
-        type: [String],
-        required: true,
-    },
-    posts: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Post',
-    }],
-}, {
-    timestamps: true,
-})
-
 const photoSchema = new Schema({
     address: { 
         type: String,
@@ -27,7 +14,12 @@ const photoSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
-    pins: [pinSchema],
+    userName: String,
+    userAvatar: String,
+    posts: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Post',
+    }],
 }, {
     timestamps: true
 })

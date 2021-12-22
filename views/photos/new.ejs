@@ -1,10 +1,14 @@
 <%- include('../partials/header') %> 
 <main>
     <form id="new-photo" action="/photos" method="POST">
-        <label>Image Address: </label>
-        <input type="text" name="address">
-        <label>Title: </label>
-        <input type="text" name="title">
+        <div>
+            <label>Image Address: </label>
+            <input type="text" name="address"><br>
+        </div>
+        <div>
+            <label>Title: </label>
+            <input type="text" name="title"><br>
+        </div>
         <button type="submit" value="New Photo">Add</button>
     </form>
 </main>
