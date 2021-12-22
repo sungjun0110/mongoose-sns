@@ -22,9 +22,10 @@ $('.pin').on('click', function() {
 });
 
 // animations for pins
-setTimeout(() => {
-    pinOpacity(false, 5)
-}, 1000)
+// setTimeout(() => {
+//     $('.pin').css('opacity', '1');
+//     // pinOpacity(false, 4);
+// }, 100)
 
 function pinOpacity(dim, loop) {
     for (let i = 0; i < loop; i++) {
