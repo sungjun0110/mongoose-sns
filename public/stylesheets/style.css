@@ -85,10 +85,6 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
 }
 
 #new-photo label {
@@ -107,7 +103,7 @@ main {
 }
 
 #new-photo button {
-  width: 50%;
+  width: 300px;
   padding: 15px;
   border-radius: 50px;
   border: none;

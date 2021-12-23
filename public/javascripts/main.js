@@ -7,7 +7,6 @@ $('.delete-btn').on('click', function() {
 });
 $('.edit-btn').on('click', function() {
     $('#edit-div').toggleClass('active');
-    console.log('HERE');
 })
 
 // click event listener for pins
@@ -19,17 +18,12 @@ $('.pin').on('click', function() {
     })
     .done(function(data) {
         $('.delete-btn').attr('action', `/posts/${photoId}/${postId}?_method=DELETE`);
+        $('#edit-form').attr('action', `/photos/${photoId}/${postId}?_method=PUT`);
         $('.posts > h3').text(data.title);
         $('.posts > p').text(data.content);
         $('.posts').css('display', 'block');
     })
 });
-
-// animations for pins
-// setTimeout(() => {
-//     $('.pin').css('opacity', '1');
-//     // pinOpacity(false, 4);
-// }, 100)
 
 function pinOpacity(dim, loop) {
     for (let i = 0; i < loop; i++) {
@@ -74,12 +68,4 @@ function getPosition(e) {
     const xr = x/photoW * 100;
     const yr = y/photoH * 100;
     return {x: xr.toFixed(2), y: yr.toFixed(2)};
-}
-
-// background animation
-// $('body').css('background-color', 'red');
-
-function backgroundDiv () {
-    const html = `<div class='background-div></div>`
-
 }

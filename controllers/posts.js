@@ -51,7 +51,6 @@ function deletePost(req, res) {
                     posts.splice(i, 1);
                     photo.posts = posts;
                     photo.save(function(err) {
-                        console.log(result);
                         res.redirect('back');
                     });
                 }
@@ -61,5 +60,11 @@ function deletePost(req, res) {
 }
 
 function update(req, res) {
-    
+    Post.findById(req.params.postId, function(err, post) {
+        post.title = req.body.title;
+        post.content = req.body.content;
+        post.save(function(err) {
+            res.redirect(`/photos/${req.params.photoId}`);
+        })
+    })
 }

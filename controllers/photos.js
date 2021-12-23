@@ -48,7 +48,7 @@ function deletePhoto(req, res) {
     console.log('WE ARE HERE');
     Photo.findByIdAndDelete(req.params.id, function(err, photo) {
         Post.deleteMany({_id: { $in: photo.posts }}, function(err, result) {
-            console.log(result);
+            res.redirect('/photos');
         })
     })
 }
