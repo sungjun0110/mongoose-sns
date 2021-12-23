@@ -22,18 +22,7 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-#nav-background {
-  width: 85vw;
-  height: 28px;
-  left: 50%;
-  top: 75px;
-  background-color: red;
-  border: 1px solid black;
-  border-radius: 30px;
-  position: absolute;
-  transform: translate(-50%, -50%);
+  background-image: linear-gradient(120deg, rgba(161, 196, 253, 0.502) 0%, rgba(194, 233, 251, 0.502) 100%);
 }
 
 #search-bar {
@@ -141,11 +130,26 @@ main {
   box-shadow: 5px 3px 30px gray;
 }
 
+.user-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+}
+
+.user-info img {
+  margin-left: 5px;
+}
+
 #photo-div {
   position: relative;
   width: 100%;
   margin: 0 auto;
   overflow-x: hidden;
+}
+
+#photo-div h2 {
+  margin-left: 5vw;
 }
 
 #photo-div img {
@@ -160,11 +164,11 @@ main {
 
 #posts-div {
   width: calc(90vw - 60px);
-  height: 800px;
   padding: 30px;
-  border: 1px solid black;
+  color: #222;
   border-radius: calc(var(--border-radius) * 2);
   margin: 0 5vw;
+  background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
 }
 
 #delete-photo {
@@ -172,7 +176,7 @@ main {
   height: 100px;
   margin: 0 auto;
   display: flex;
-  justify-content: right;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -236,7 +240,7 @@ main {
   color: #ccc;
   position: absolute;
   width: 80%;
-  height: 80%;
+  height: 70%;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);

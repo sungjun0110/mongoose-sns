@@ -5,6 +5,10 @@
         <% photos.forEach(photo => { %>
             <div class='photo-grid-tiles'>
                 <a href="/photos/<%= photo._id %>"><img class="photo" src=<%= photo.address %>></a>
+                <div class='user-info'>
+                    <%= photo.userName %>
+                    <img src='<%= photo.userAvatar %>' style="width: 30px">
+                </div>
             </div>
         <% }); %>
     </div>
