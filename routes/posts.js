@@ -6,5 +6,6 @@ const isLoggedIn = require('../config/auth');
 router.post('/posts/:photoId', isLoggedIn, postsCtrl.create);
 router.get('/posts/:photoId/:postId', postsCtrl.show);
 router.delete('/posts/:photoId/:postId', isLoggedIn, postsCtrl.delete);
+router.put('/posts/:postId', isLoggedIn, postsCtrl.update);
 
 module.exports = router;

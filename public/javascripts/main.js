@@ -5,6 +5,10 @@ $('.close-btn').on('click', function() {
 $('.delete-btn').on('click', function() {
     $(this).parent().css('display', 'none');
 });
+$('.edit-btn').on('click', function() {
+    $('#edit-div').toggleClass('active');
+    console.log('HERE');
+})
 
 // click event listener for pins
 $('.pin').on('click', function() {

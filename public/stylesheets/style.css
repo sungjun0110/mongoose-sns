@@ -218,21 +218,6 @@ main {
   backdrop-filter: blur(20px);
 }
 
-.delete-btn button {
-  background-color: rgba(0,0,0,0);
-  border: none;
-  position: absolute;
-  left: 5px;
-  top: 5px;
-  font-size: 20px;
-  color: #ccc;
-  transition: all .25s ease-out
-}
-
-.delete-btn button:hover {
-  color: red;
-}
-
 .close-btn {
   background-color: rgba(0,0,0,0);
   border: none;
@@ -254,17 +239,80 @@ main {
   background-color: rgba(69, 64, 87, 0.8);
   color: #ccc;
   position: absolute;
-  width: 60vw;
-  height: 60vh;
+  width: 80%;
+  height: 80%;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   border-radius: var(--border-radius);
+  padding: 50px;
 }
 
 #posts h3 {
   border-bottom: solid 1px #777;
   padding: 5px;
   margin: 0;
+}
 
+#post-btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
+
+#post-btns button {
+  background-color: rgba(0,0,0,0);
+  border: none;
+  font-size: 20px;
+  color: #ccc;
+  transition: all .25s ease-out
+}
+
+#post-btns button:hover {
+  color: red;
+}
+
+#edit-div {
+  width: 80%;
+  height: 40%;
+  position: absolute;
+  background-color: rgba(69, 64, 87, 0.8);
+  padding: 50px;
+  border-radius: var(--border-radius);
+  display: none;
+
+}
+
+#edit-div.active {
+  display: block;
+}
+
+#edit-div button {
+  background-color: rgba(0,0,0,0);
+  color: white;
+  border: none;
+  transition: 0.25s all ease-out;
+  font-size: 15px;
+}
+
+#edit-div button:hover {
+  color: red;
+}
+
+#edit-div label {
+  display: inline-block;
+  width: 100px;
+  height: 50px;
+}
+
+#edit-div input, #edit-div textarea {
+  background-color: rgba(0,0,0,0.1);
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  color: white;
 }
