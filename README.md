@@ -30,6 +30,14 @@ HTML
 
 CSS
 
+Mongoose
+
+MongoDB
+
+Express
+
+Node.js
+
 ## Getting Started
 
 [Link to the website](https://mongoose-sns.herokuapp.com/)
